@@ -1,101 +1,130 @@
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import { IoArrowForward } from "react-icons/io5";
+import Link from "next/link"; // Import Link
+import Service from "./components/Service";
+import About from "./components/About";
+import Footer from "./components/footer";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // Toggle menu function
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <div className="bg-gray-200 text-gray-900 min-h-screen">
+      {/* Navbar */}
+      <header
+        className={`${
+          isMenuOpen ? "fixed top-0 left-0 w-full z-50" : "relative"
+        } bg-white shadow`}
+      >
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold">v_hd</h1>
+          <button
+            onClick={toggleMenu}
+            className="text-xl border px-4 py-2 rounded"
           >
+            {isMenuOpen ? "✖" : "☰"}
+          </button>
+        </div>
+        {isMenuOpen && (
+          <div className="absolute h-screen left-0 w-full bg-black text-white">
+            <ul className="flex flex-col items-start p-6 space-y-4">
+              <li>
+                <a href="#" className="text-xl underline">
+                  Kezdőlap
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-xl">
+                  Rólam
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-xl underline">
+                  Munkáim
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-xl">
+                  Kapcsolat
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+      </header>
+
+      {/* Main Content */}
+      <main
+        className={`container mx-auto px-6 py-12 ${isMenuOpen ? "mt-40" : "mt-12"}`}
+      >
+        <div className="grid md:grid-cols-3 gap-8"> {/* Updated gap to 8 */}
+          {/* Left Section */}
+          <div className="col-span-1 flex flex-col justify-center">
+            <h2 className="text-4xl font-bold leading-tight">
+              Take the <span className="text-gray-600">_</span> space seriously.
+            </h2>
+            <p className="mt-2 text-sm uppercase font-bold">Viktoria Home Design</p>
+            <div className="mt-8 space-y-4">
+              {/* Grid for Quotes */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <blockquote className="text-sm italic border-l-4 border-gray-300 pl-4">
+                  “Every time I smile when I enter the room designed by her. It’s
+                  like she always knows what is it that truly makes me happy.”
+                  <br />
+                  <span className="block mt-2 text-gray-500">- Fanni Kriss</span>
+                </blockquote>
+                <blockquote className="text-sm italic border-l-4 border-gray-300 pl-4">
+                  “She understood my style and added a little magic that makes my
+                  home completely unique.”
+                  <br />
+                  <span className="block mt-2 text-gray-500">- Zsolt Munyhárt</span>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+
+          {/* Middle Section - Image */}
+          <div className="col-span-1 flex justify-center items-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/project3.png" // Image source from the public folder
+              alt="Living Room"
+              width={1000} // Adjusted width
+              height={350} // Adjusted height
+              className="rounded-lg shadow-md object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+        </div>
+
+        {/* Buttons - Positioned directly below the image */}
+        <div className="text-center mt-8"> {/* Adjusted margin */}
+          <div className="grid grid-cols-2 gap-6"> {/* Updated gap to 6 */}
+            {/* Button 1 */}
+            <Link href="/contact">
+              <button className="w-[200px] h-24 ml-auto bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 flex items-center justify-center">
+                <span className="text-lg font-semibold text-gray-900">Contact Me</span>
+                <IoArrowForward className="ml-2 text-gray-900" />
+              </button>
+            </Link>
+            {/* Button 2 */}
+            <Link href="/shop">
+              <button className="w-full md:w-[200px] h-24 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-black hover:text-white flex items-center justify-center">
+                <span className="text-lg font-semibold text-gray-900">Shop</span>
+                <IoArrowForward className="ml-2 text-gray-900" />
+              </button>
+            </Link>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Service />
+      <About />
+      <Footer />
     </div>
   );
 }
