@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 
@@ -77,8 +78,11 @@ const About = () => {
           </div>
         </div>
       </div>
+
+    
     </>
   );
 };
 
 export default About;
+ 

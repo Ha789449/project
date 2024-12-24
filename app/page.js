@@ -5,7 +5,8 @@ import { IoArrowForward } from "react-icons/io5";
 import Link from "next/link";
 import Service from "./components/Service";
 import About from "./components/About";
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
+import Footer from './components/Footer';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,7 +75,7 @@ export default function Home() {
           </div>
 
           {/* Right Image Section */}
-          <div className="col-span-12 md:col-span-6 relative w-full">
+          <div className="col-span-12 md:col-span-6 relative w-full h-full">
             <Image
               src="/project3.png" // Image source from the public folder
               alt="Hero Section"
@@ -106,10 +107,11 @@ export default function Home() {
       <main className="container mx-auto px-6 py-12">
         <Service />
         <About />
+        <Footer/>
       </main>
 
       {/* Footer */}
-      <Footer />
+     
     </div>
   );
 }

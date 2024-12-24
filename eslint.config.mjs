@@ -8,6 +8,12 @@ const __dirname = dirname(__filename);
 const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
+module.exports = {
+  rules: {
+    "no-undef": "off"
+  }
+};
+
 
 const eslintConfig = [...compat.extends("next/core-web-vitals")];
 

@@ -8,7 +8,7 @@ export default function Home() {
     <div className="bg-gray-200 text-gray-900 min-h-screen">
       {/* Services Section */}
       <section className="container mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold mb-6">Szolgáltatások</h2>
+        <h2 className="text-3xl font-bold mb-6">-Services</h2>
         <p className="text-sm mb-8">
           Minimalism and the harmony of space are my specialties. I create sleek, functional spaces with fewer but more valuable elements, where every detail matters.
         </p>
