@@ -25,15 +25,13 @@ const Footer = () => {
       </div>
 
       {/* Top Section */}
-      <div className="container mx-auto px-4 py-8 flex flex-col lg:flex-row justify-between">
+      <div className="container mx-auto px-4 py-8 flex flex-col lg:flex-row justify-between space-y-8 lg:space-y-0">
         {/* Logo Section */}
         <div className="mb-8 lg:mb-0">
           <h1 className="text-4xl font-bold mb-2">v_hd</h1>
           <p className="mb-4">
             Take the <span className="font-bold text-black bg-white">space</span> seriously
           </p>
-          
-          
         </div>
 
         {/* About Links */}
@@ -62,19 +60,19 @@ const Footer = () => {
       </div>
 
       {/* Terms Links */}
-      <div className="flex justify-between items-start w-full">
-  <p className="text-gray-300">
-    Viktória Hettvai<br />
-    v_hd@hu<br />
-    +36 999 999 999
-  </p>
+      <div className="flex flex-col lg:flex-row justify-between items-start w-full px-4 py-4">
+        <p className="text-gray-300 mb-4 lg:mb-0">
+          Viktória Hettvai<br />
+          v_hd@hu<br />
+          +36 999 999 999
+        </p>
 
-  <div className="flex space-x-8 my-10">
-    <a href="#" className="hover:text-gray-400">_ Terms and Conditions</a>
-    <a href="#" className="hover:text-gray-400">_ Privacy Policy</a>
-    <a href="#" className="hover:text-gray-400">_ Security</a>
-  </div>
-</div>
+        <div className="flex flex-col lg:flex-row space-y-4 lg:space-x-8 lg:space-y-0">
+          <a href="#" className="hover:text-gray-400">_ Terms and Conditions</a>
+          <a href="#" className="hover:text-gray-400">_ Privacy Policy</a>
+          <a href="#" className="hover:text-gray-400">_ Security</a>
+        </div>
+      </div>
 
     </footer>
   );
