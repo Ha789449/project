@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { IoArrowForward } from "react-icons/io5";
-import Link from "next/link"; // Import Link
+import Link from "next/link";
 import Service from "./components/Service";
 import About from "./components/About";
 import Footer from "./components/footer";
@@ -10,7 +10,6 @@ import Footer from "./components/footer";
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Toggle menu function
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -18,17 +17,10 @@ export default function Home() {
   return (
     <div className="bg-gray-200 text-gray-900 min-h-screen">
       {/* Navbar */}
-      <header
-        className={`${
-          isMenuOpen ? "fixed top-0 left-0 w-full z-50" : "relative"
-        } bg-white shadow`}
-      >
+      <header className={`bg-gray-100 shadow ${isMenuOpen ? "fixed w-full z-50" : "relative"}`}>
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">v_hd</h1>
-          <button
-            onClick={toggleMenu}
-            className="text-xl border px-4 py-2 rounded"
-          >
+          <button onClick={toggleMenu} className="text-xl border px-4 py-2 rounded">
             {isMenuOpen ? "✖" : "☰"}
           </button>
         </div>
@@ -36,94 +28,87 @@ export default function Home() {
           <div className="absolute h-screen left-0 w-full bg-black text-white">
             <ul className="flex flex-col items-start p-6 space-y-4">
               <li>
-                <a href="#" className="text-xl underline">
-                  Kezdőlap
-                </a>
+                <a href="#" className="text-xl underline">Kezdőlap</a>
               </li>
               <li>
-                <a href="#" className="text-xl">
-                  Rólam
-                </a>
+                <a href="#" className="text-xl">Rólam</a>
               </li>
               <li>
-                <a href="#" className="text-xl underline">
-                  Munkáim
-                </a>
+                <a href="#" className="text-xl underline">Munkáim</a>
               </li>
               <li>
-                <a href="#" className="text-xl">
-                  Kapcsolat
-                </a>
+                <a href="#" className="text-xl">Kapcsolat</a>
               </li>
             </ul>
           </div>
         )}
       </header>
 
-      {/* Main Content */}
-      <main
-        className={`container mx-auto px-6 py-12 ${isMenuOpen ? "mt-40" : "mt-12"}`}
-      >
-        <div className="grid md:grid-cols-3 gap-8"> {/* Updated gap to 8 */}
-          {/* Left Section */}
-          <div className="col-span-1 flex flex-col justify-center">
-            <h2 className="text-4xl font-bold leading-tight">
-              Take the <span className="text-gray-600">_</span> space seriously.
-            </h2>
-            <p className="mt-2 text-sm uppercase font-bold">Viktoria Home Design</p>
-            <div className="mt-8 space-y-4">
-              {/* Grid for Quotes */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <blockquote className="text-sm italic border-l-4 border-gray-300 pl-4">
-                  “Every time I smile when I enter the room designed by her. It’s
-                  like she always knows what is it that truly makes me happy.”
-                  <br />
-                  <span className="block mt-2 text-gray-500">- Fanni Kriss</span>
-                </blockquote>
-                <blockquote className="text-sm italic border-l-4 border-gray-300 pl-4">
-                  “She understood my style and added a little magic that makes my
-                  home completely unique.”
-                  <br />
-                  <span className="block mt-2 text-gray-500">- Zsolt Munyhárt</span>
-                </blockquote>
-              </div>
+      {/* Hero Section */}
+      <div className="relative bg-gray-200 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12">
+          {/* Left Content */}
+          <div className="col-span-12 md:col-span-6 flex flex-col p-6 md:p-12 gap-6">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                Take the <span className="underline bg-white">space</span> seriously.
+              </h1>
+              <p className="mt-2 text-lg font-medium">VIKTORIA HOME DESIGN</p>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <blockquote className="border-l-4 border-gray-400 pl-4">
+                <p className="italic text-sm">
+                  “Every time I smile when I enter the room designed by her. It’s like she always knows what it is that truly makes me happy.”
+                </p>
+                <cite className="block mt-2 text-sm font-bold">– Fiona Hilton</cite>
+              </blockquote>
+
+              <blockquote className="border-l-4 border-gray-400 pl-4">
+                <p className="italic text-sm">
+                  “She understood my style and added a little magic that makes my home completely unique.”
+                </p>
+                <cite className="block mt-2 text-sm font-bold">– Josh Markraft</cite>
+              </blockquote>
             </div>
           </div>
 
-          {/* Middle Section - Image */}
-          <div className="col-span-1 flex justify-center items-center">
+          {/* Right Image Section */}
+          <div className="col-span-12 md:col-span-6 relative w-full">
             <Image
               src="/project3.png" // Image source from the public folder
-              alt="Living Room"
-              width={1000} // Adjusted width
-              height={350} // Adjusted height
-              className="rounded-lg shadow-md object-cover"
+              alt="Hero Section"
+              layout="responsive"
+              width={1200} // Set appropriate width
+              height={800} // Set appropriate height
+              priority
+              className="object-cover"
             />
-          </div>
-        </div>
+            {/* Buttons below the image */}
+            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex w-full">
+              <button className="w-full h-[100px] bg-gray-200 border-5 p-5 m-0 border-black rounded text-sm uppercase tracking-wider flex items-center">
+                Contact me
+                <IoArrowForward className="ml-2" />
+              </button>
+              <button className="w-full h-[100px] m-0 bg-gray-200 text-center border-5 p-5 border-black rounded text-sm uppercase tracking-wider hover:bg-black transition flex items-center">
+                Shop
+                <IoArrowForward className="ml-2" />
+              </button>
 
-        {/* Buttons - Positioned directly below the image */}
-        <div className="text-center mt-8"> {/* Adjusted margin */}
-          <div className="grid grid-cols-2 gap-6"> {/* Updated gap to 6 */}
-            {/* Button 1 */}
-            <Link href="/contact">
-              <button className="w-[200px] h-24 ml-auto bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 flex items-center justify-center">
-                <span className="text-lg font-semibold text-gray-900">Contact Me</span>
-                <IoArrowForward className="ml-2 text-gray-900" />
-              </button>
-            </Link>
-            {/* Button 2 */}
-            <Link href="/shop">
-              <button className="w-full md:w-[200px] h-24 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-black hover:text-white flex items-center justify-center">
-                <span className="text-lg font-semibold text-gray-900">Shop</span>
-                <IoArrowForward className="ml-2 text-gray-900" />
-              </button>
-            </Link>
+            </div>
           </div>
         </div>
+      </div>
+
+
+
+      {/* Main Content */}
+      <main className="container mx-auto px-6 py-12">
+        <Service />
+        <About />
       </main>
-      <Service />
-      <About />
+
+      {/* Footer */}
       <Footer />
     </div>
   );
